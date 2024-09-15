@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seasonal Stock Companies</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .season-table {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="bg-primary text-white text-center py-5">
+        <h1>Seasonal Stock Companies</h1>
+        <p>Discover companies that perform well during different seasons.</p>
+    </header>
+
+    <!-- Container for the seasonal list -->
+    <div class="container my-5" id="seasonal-container">
+        <!-- Data will be appended here by JavaScript -->
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var data = [
+                {
+                    season: "Christmas and New Year Season",
+                    range: "December to early January",
+                    companies: ["SM Investments Corporation (SMIC)", "Robinsons Retail Holdings, Inc.", "Jollibee Foods Corporation", "Puregold Price Club, Inc."]
+                },
+                {
+                    season: "Holy Week Season",
+                    range: "March or April",
+                    companies: ["Cebu Pacific Air", "Philippine Airlines"]
+                },
+                {
+                    season: "All Saints' and All Souls' Day Season",
+                    range: "Late October to early November",
+                    companies: ["Manila Memorial Park"]
+                }
+            ];
+
+            data.forEach(function (item) {
+                var tableHtml = `
+                    <h2>${item.season}</h2>
+                    <p><strong>Months:</strong> ${item.range}</p>
+                    <table class="table table-bordered season-table">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${item.companies.map(company => `<tr><td>${company}</td></tr>`).join('')}
+                        </tbody>
+                    </table>
+                `;
+                $('#seasonal-container').append(tableHtml);
+            });
+        });
+    </script>
+</body>
+
+</html>
